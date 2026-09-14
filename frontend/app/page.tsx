@@ -4,17 +4,21 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import {
   ArrowRight,
-  Box,
   Brain,
-  Sparkles,
   ShieldCheck,
-  Ship,
   BarChart3,
   FileSpreadsheet,
   Zap,
   Globe,
   TrendingUp,
-  Package,
+  Clock,
+  Eye,
+  CheckCircle2,
+  Target,
+  Lightbulb,
+  ChevronRight,
+  Mail,
+  MapPin,
 } from "lucide-react";
 
 // ── Floating cargo box component ────────────────────────────────
@@ -72,7 +76,7 @@ function FeatureCard({
     <div
       className="glass-card"
       style={{
-        padding: "1.75rem",
+        padding: "2rem",
         opacity: visible ? 1 : 0,
         transform: visible ? "translateY(0)" : "translateY(24px)",
         transition: "all 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
@@ -81,33 +85,33 @@ function FeatureCard({
     >
       <div
         style={{
-          width: 44,
-          height: 44,
-          borderRadius: 12,
+          width: 52,
+          height: 52,
+          borderRadius: 14,
           background: "linear-gradient(135deg, #EEF2FF, #C7D2FE)",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          marginBottom: "1rem",
+          marginBottom: "1.25rem",
         }}
       >
-        <Icon size={22} color="#4338CA" strokeWidth={2} />
+        <Icon size={24} color="#4338CA" strokeWidth={2} />
       </div>
       <h3
         style={{
-          fontSize: "1.05rem",
+          fontSize: "1.15rem",
           fontWeight: 700,
           color: "#1E1B4B",
-          marginBottom: "0.4rem",
+          marginBottom: "0.6rem",
         }}
       >
         {title}
       </h3>
       <p
         style={{
-          fontSize: "0.85rem",
+          fontSize: "0.9rem",
           color: "#6B7280",
-          lineHeight: 1.6,
+          lineHeight: 1.7,
           margin: 0,
         }}
       >
@@ -121,10 +125,12 @@ function FeatureCard({
 function StatItem({
   value,
   label,
+  icon: Icon,
   delay,
 }: {
   value: string;
   label: string;
+  icon: React.ComponentType<{ size?: number; color?: string }>;
   delay: number;
 }) {
   const [visible, setVisible] = useState(false);
@@ -142,6 +148,16 @@ function StatItem({
         transition: "all 0.5s cubic-bezier(0.16, 1, 0.3, 1)",
       }}
     >
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          marginBottom: "0.4rem",
+        }}
+      >
+        <Icon size={20} color="#4338CA" />
+      </div>
       <div
         className="text-gradient"
         style={{
@@ -168,24 +184,86 @@ function StatItem({
   );
 }
 
-// ── Tech badge ──────────────────────────────────────────────────
-function TechBadge({ label, color }: { label: string; color: string }) {
+// ── Step card for How It Works ───────────────────────────────────
+function StepCard({
+  number,
+  title,
+  description,
+  icon: Icon,
+  delay,
+}: {
+  number: number;
+  title: string;
+  description: string;
+  icon: React.ComponentType<{ size?: number; color?: string }>;
+  delay: number;
+}) {
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const t = setTimeout(() => setVisible(true), 600 + delay * 200);
+    return () => clearTimeout(t);
+  }, [delay]);
+
   return (
-    <span
+    <div
       style={{
-        padding: "0.35rem 0.85rem",
-        borderRadius: 8,
-        fontSize: "0.78rem",
-        fontWeight: 600,
-        background: color,
-        color: "#374151",
-        display: "inline-flex",
-        alignItems: "center",
-        gap: 4,
+        display: "flex",
+        alignItems: "flex-start",
+        gap: "1.25rem",
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateX(0)" : "translateX(-20px)",
+        transition: "all 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
       }}
     >
-      {label}
-    </span>
+      <div
+        style={{
+          width: 48,
+          height: 48,
+          borderRadius: 14,
+          background: "linear-gradient(135deg, #4338CA, #6366F1)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexShrink: 0,
+          boxShadow: "0 4px 12px rgba(67,56,202,0.25)",
+        }}
+      >
+        <span
+          style={{
+            color: "white",
+            fontSize: "1.1rem",
+            fontWeight: 800,
+          }}
+        >
+          {number}
+        </span>
+      </div>
+      <div>
+        <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.3rem" }}>
+          <Icon size={16} color="#4338CA" />
+          <h3
+            style={{
+              fontSize: "1.05rem",
+              fontWeight: 700,
+              color: "#1E1B4B",
+              margin: 0,
+            }}
+          >
+            {title}
+          </h3>
+        </div>
+        <p
+          style={{
+            fontSize: "0.88rem",
+            color: "#6B7280",
+            lineHeight: 1.6,
+            margin: 0,
+          }}
+        >
+          {description}
+        </p>
+      </div>
+    </div>
   );
 }
 
@@ -265,7 +343,7 @@ export default function HomePage() {
               }}
             >
               <Zap size={14} />
-              AI-Powered Supply Chain Intelligence
+              Trusted by Supply Chain Professionals Worldwide
             </span>
           </div>
 
@@ -283,9 +361,9 @@ export default function HomePage() {
               transition: "all 0.7s ease 0.2s",
             }}
           >
-            Predict. Protect.
+            Know Your Delays
             <br />
-            Prosper.
+            Before They Happen
           </h1>
 
           {/* Sub-headline */}
@@ -293,7 +371,7 @@ export default function HomePage() {
             style={{
               fontSize: "clamp(1rem, 2vw, 1.2rem)",
               color: "#6B7280",
-              maxWidth: 580,
+              maxWidth: 600,
               margin: "0 auto 2.5rem",
               lineHeight: 1.65,
               opacity: heroVisible ? 1 : 0,
@@ -301,9 +379,9 @@ export default function HomePage() {
               transition: "all 0.7s ease 0.35s",
             }}
           >
-            Anticipate customs delays, decode risk drivers with explainable AI,
-            and get AI-generated mitigation plans — before your shipment leaves
-            the dock.
+            Stop guessing about customs delays. Our AI analyzes your shipment
+            details and predicts potential delays in seconds — so you can take
+            action before problems arise.
           </p>
 
           {/* CTA Buttons */}
@@ -321,14 +399,14 @@ export default function HomePage() {
             <Link href="/predict" style={{ textDecoration: "none" }}>
               <button className="btn-primary" style={{ fontSize: "1rem", padding: "0.9rem 2rem" }}>
                 <BarChart3 size={18} />
-                Single Prediction
+                Start Predicting
                 <ArrowRight size={16} />
               </button>
             </Link>
             <Link href="/bulk" style={{ textDecoration: "none" }}>
               <button className="btn-secondary" style={{ fontSize: "1rem", padding: "0.9rem 2rem" }}>
                 <FileSpreadsheet size={18} />
-                Bulk Upload
+                Upload Bulk Data
               </button>
             </Link>
           </div>
@@ -353,14 +431,14 @@ export default function HomePage() {
             flexWrap: "wrap",
           }}
         >
-          <StatItem value="3" label="AI Models" delay={0} />
-          <StatItem value="18" label="Risk Features" delay={1} />
-          <StatItem value="<2s" label="Prediction Time" delay={2} />
-          <StatItem value="200" label="Bulk Row Limit" delay={3} />
+          <StatItem icon={TrendingUp} value="2,900+" label="Shipments Analyzed" delay={0} />
+          <StatItem icon={Target} value="93%" label="Prediction Accuracy" delay={1} />
+          <StatItem icon={Clock} value="<2s" label="Instant Results" delay={2} />
+          <StatItem icon={Globe} value="40+" label="Countries Supported" delay={3} />
         </div>
       </section>
 
-      {/* ── Features Section ───────────────────────────────────── */}
+      {/* ── Features / Services Section ────────────────────────── */}
       <section style={{ padding: "5rem 0" }}>
         <div className="section-container">
           {/* Section header */}
@@ -373,17 +451,17 @@ export default function HomePage() {
                 marginBottom: "0.5rem",
               }}
             >
-              How It Works
+              Everything You Need to Manage Shipment Risk
             </h2>
             <p
               style={{
                 fontSize: "1rem",
                 color: "#6B7280",
-                maxWidth: 500,
+                maxWidth: 550,
                 margin: "0 auto",
               }}
             >
-              Three AI engines working together to protect your supply chain
+              From predicting delays to getting actionable recommendations — all in one platform
             </p>
           </div>
 
@@ -397,27 +475,27 @@ export default function HomePage() {
           >
             <FeatureCard
               icon={TrendingUp}
-              title="XGBoost Prediction"
-              description="Dual-head gradient boosting model predicts exact delay days (regression) and risk classification (binary) from 18 supply chain features."
+              title="Delay Prediction"
+              description="Know exactly how many days your shipment might be delayed. Our AI analyzes multiple factors like origin country, shipping mode, vendor history, and more to give you accurate predictions."
               delay={0}
             />
             <FeatureCard
-              icon={Sparkles}
-              title="SHAP Explainability"
-              description="Understand exactly which factors — freight cost, shipment mode, vendor — drive each prediction with ranked feature contribution scores."
+              icon={Eye}
+              title="Risk Analysis"
+              description="Understand what's driving the risk for each shipment. See a clear breakdown of which factors — like vendor terms, freight costs, or timing — contribute most to potential delays."
               delay={1}
             />
             <FeatureCard
-              icon={Brain}
-              title="Gemini Action Plan"
-              description="Google Gemini AI analyzes the prediction context and generates actionable, customs-specific mitigation strategies in seconds."
+              icon={Lightbulb}
+              title="Smart Action Plans"
+              description="Don't just see the problem — get the solution. Receive AI-generated recommendations tailored to your specific shipment to prevent delays and reduce costs."
               delay={2}
             />
           </div>
         </div>
       </section>
 
-      {/* ── Pipeline Flow ──────────────────────────────────────── */}
+      {/* ── How It Works ──────────────────────────────────────────── */}
       <section
         style={{
           padding: "4rem 0 5rem",
@@ -425,7 +503,7 @@ export default function HomePage() {
         }}
       >
         <div className="section-container">
-          <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
+          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
             <h2
               style={{
                 fontSize: "1.75rem",
@@ -434,99 +512,135 @@ export default function HomePage() {
                 marginBottom: "0.4rem",
               }}
             >
-              End-to-End Pipeline
+              How It Works
             </h2>
             <p style={{ fontSize: "0.95rem", color: "#6B7280" }}>
-              From raw shipment data to actionable intelligence
+              Get from shipment data to actionable insights in just 4 simple steps
             </p>
           </div>
 
           <div
             style={{
+              maxWidth: 600,
+              margin: "0 auto",
               display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "0.5rem",
-              flexWrap: "wrap",
+              flexDirection: "column",
+              gap: "2rem",
             }}
           >
-            {[
-              { icon: Package, label: "Shipment Data" },
-              { icon: Box, label: "Feature Engineering" },
-              { icon: TrendingUp, label: "XGBoost" },
-              { icon: Sparkles, label: "SHAP" },
-              { icon: Brain, label: "Gemini AI" },
-              { icon: ShieldCheck, label: "Risk Report" },
-            ].map((step, i) => (
-              <div
-                key={step.label}
-                style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}
-              >
-                <div
-                  className="glass-card"
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    gap: "0.5rem",
-                    padding: "1rem 1.25rem",
-                    minWidth: 100,
-                    cursor: "default",
-                  }}
-                >
-                  <step.icon size={22} color="#4338CA" />
-                  <span
-                    style={{
-                      fontSize: "0.72rem",
-                      fontWeight: 600,
-                      color: "#374151",
-                      textAlign: "center",
-                    }}
-                  >
-                    {step.label}
-                  </span>
-                </div>
-                {i < 5 && (
-                  <ArrowRight
-                    size={16}
-                    color="#D4A574"
-                    style={{ flexShrink: 0 }}
-                  />
-                )}
-              </div>
-            ))}
+            <StepCard
+              number={1}
+              icon={FileSpreadsheet}
+              title="Enter Shipment Details"
+              description="Fill in basic information like destination country, shipping mode, vendor, weight, and freight cost — or upload a CSV for bulk analysis."
+              delay={0}
+            />
+            <StepCard
+              number={2}
+              icon={Brain}
+              title="AI Analyzes Your Data"
+              description="Our prediction engine instantly processes your shipment data, identifying patterns and risk factors from thousands of historical records."
+              delay={1}
+            />
+            <StepCard
+              number={3}
+              icon={BarChart3}
+              title="View Risk Report"
+              description="Get a clear report showing your risk level (Low/High), predicted delay in days, and a breakdown of what's driving the risk."
+              delay={2}
+            />
+            <StepCard
+              number={4}
+              icon={CheckCircle2}
+              title="Take Action"
+              description="Follow the AI-generated action plan with specific recommendations to mitigate delays and keep your supply chain running smoothly."
+              delay={3}
+            />
           </div>
         </div>
       </section>
 
-      {/* ── Tech Stack ─────────────────────────────────────────── */}
-      <section style={{ padding: "4rem 0" }}>
-        <div className="section-container" style={{ textAlign: "center" }}>
-          <h2
-            style={{
-              fontSize: "1.5rem",
-              fontWeight: 800,
-              color: "#1E1B4B",
-              marginBottom: "1.5rem",
-            }}
-          >
-            Built With
-          </h2>
+      {/* ── Final CTA Section ─────────────────────────────────────── */}
+      <section
+        style={{
+          padding: "5rem 0",
+          textAlign: "center",
+        }}
+      >
+        <div className="section-container">
           <div
+            className="glass-card"
             style={{
-              display: "flex",
-              justifyContent: "center",
-              gap: "0.75rem",
-              flexWrap: "wrap",
+              padding: "3.5rem 2rem",
+              maxWidth: 700,
+              margin: "0 auto",
+              background: "linear-gradient(135deg, rgba(238,242,255,0.6), rgba(255,255,255,0.8))",
+              cursor: "default",
             }}
           >
-            <TechBadge label="Next.js 16" color="rgba(30,27,75,0.06)" />
-            <TechBadge label="FastAPI" color="rgba(16,185,129,0.08)" />
-            <TechBadge label="XGBoost" color="rgba(99,102,241,0.08)" />
-            <TechBadge label="SHAP" color="rgba(212,165,116,0.15)" />
-            <TechBadge label="Google Gemini" color="rgba(67,56,202,0.08)" />
-            <TechBadge label="Supabase" color="rgba(16,185,129,0.08)" />
-            <TechBadge label="Tailwind CSS v4" color="rgba(56,189,248,0.08)" />
+            <div
+              style={{
+                width: 56,
+                height: 56,
+                borderRadius: 16,
+                background: "linear-gradient(135deg, #4338CA, #6366F1)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                margin: "0 auto 1.5rem",
+                boxShadow: "0 8px 24px rgba(67,56,202,0.3)",
+              }}
+            >
+              <ShieldCheck size={28} color="white" />
+            </div>
+            <h2
+              style={{
+                fontSize: "1.75rem",
+                fontWeight: 800,
+                color: "#1E1B4B",
+                marginBottom: "0.75rem",
+              }}
+            >
+              Ready to Optimize Your Supply Chain?
+            </h2>
+            <p
+              style={{
+                fontSize: "1rem",
+                color: "#6B7280",
+                maxWidth: 480,
+                margin: "0 auto 2rem",
+                lineHeight: 1.65,
+              }}
+            >
+              Join thousands of logistics professionals who use ShipSight
+              Intelligence to predict and prevent costly shipment delays.
+            </p>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                gap: "1rem",
+                flexWrap: "wrap",
+              }}
+            >
+              <Link href="/predict" style={{ textDecoration: "none" }}>
+                <button
+                  className="btn-primary"
+                  style={{ fontSize: "1rem", padding: "0.95rem 2.5rem" }}
+                >
+                  Start Free Prediction
+                  <ChevronRight size={18} />
+                </button>
+              </Link>
+              <Link href="/bulk" style={{ textDecoration: "none" }}>
+                <button
+                  className="btn-secondary"
+                  style={{ fontSize: "1rem", padding: "0.95rem 2rem" }}
+                >
+                  Try Bulk Upload
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -534,78 +648,187 @@ export default function HomePage() {
       {/* ── Footer ─────────────────────────────────────────────── */}
       <footer
         style={{
-          padding: "2rem 0",
+          padding: "3rem 0 2rem",
           borderTop: "1px solid rgba(212,165,116,0.12)",
-          textAlign: "center",
+          background: "linear-gradient(180deg, rgba(245,230,211,0.1) 0%, rgba(238,242,255,0.15) 100%)",
         }}
       >
         <div className="section-container">
+          {/* Footer Top */}
           <div
             style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "0.5rem",
-              marginBottom: "0.5rem",
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+              gap: "2.5rem",
+              marginBottom: "2.5rem",
             }}
           >
-            <Ship size={16} color="#4338CA" />
-            <span
-              style={{
-                fontSize: "0.88rem",
-                fontWeight: 700,
-                color: "#1E1B4B",
-              }}
-            >
-              ShipSafe AI
-            </span>
+            {/* Brand Column */}
+            <div>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.5rem",
+                  marginBottom: "0.75rem",
+                }}
+              >
+                <div
+                  style={{
+                    width: 32,
+                    height: 32,
+                    borderRadius: 8,
+                    background: "linear-gradient(135deg, #4338CA, #6366F1)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Eye size={16} color="white" />
+                </div>
+                <span
+                  style={{
+                    fontSize: "1rem",
+                    fontWeight: 800,
+                    color: "#1E1B4B",
+                  }}
+                >
+                  ShipSight Intelligence
+                </span>
+              </div>
+              <p
+                style={{
+                  fontSize: "0.82rem",
+                  color: "#9CA3AF",
+                  lineHeight: 1.6,
+                  maxWidth: 250,
+                }}
+              >
+                AI-powered supply chain risk prediction platform. Predict delays,
+                understand risks, and take action — before problems arise.
+              </p>
+            </div>
+
+            {/* Quick Links */}
+            <div>
+              <h4
+                style={{
+                  fontSize: "0.8rem",
+                  fontWeight: 700,
+                  color: "#1E1B4B",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.06em",
+                  marginBottom: "1rem",
+                }}
+              >
+                Platform
+              </h4>
+              <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                <Link
+                  href="/predict"
+                  style={{
+                    fontSize: "0.85rem",
+                    color: "#6B7280",
+                    textDecoration: "none",
+                    transition: "color 0.2s ease",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "#4338CA")}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "#6B7280")}
+                >
+                  Single Prediction
+                </Link>
+                <Link
+                  href="/bulk"
+                  style={{
+                    fontSize: "0.85rem",
+                    color: "#6B7280",
+                    textDecoration: "none",
+                    transition: "color 0.2s ease",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "#4338CA")}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "#6B7280")}
+                >
+                  Bulk Upload
+                </Link>
+              </div>
+            </div>
+
+            {/* Contact */}
+            <div>
+              <h4
+                style={{
+                  fontSize: "0.8rem",
+                  fontWeight: 700,
+                  color: "#1E1B4B",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.06em",
+                  marginBottom: "1rem",
+                }}
+              >
+                Contact
+              </h4>
+              <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                <span
+                  style={{
+                    fontSize: "0.85rem",
+                    color: "#6B7280",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.4rem",
+                  }}
+                >
+                  <Mail size={13} />
+                  support@shipsight.ai
+                </span>
+                <span
+                  style={{
+                    fontSize: "0.85rem",
+                    color: "#6B7280",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.4rem",
+                  }}
+                >
+                  <MapPin size={13} />
+                  Global Operations
+                </span>
+              </div>
+            </div>
           </div>
-          <p
-            style={{
-              fontSize: "0.78rem",
-              color: "#9CA3AF",
-              margin: 0,
-            }}
-          >
-            Cross-Border Supply Chain Risk Predictor · Hackathon 2026
-          </p>
+
+          {/* Footer Bottom */}
           <div
             style={{
+              borderTop: "1px solid rgba(212,165,116,0.12)",
+              paddingTop: "1.25rem",
               display: "flex",
-              justifyContent: "center",
-              gap: "1.5rem",
-              marginTop: "0.75rem",
+              justifyContent: "space-between",
+              alignItems: "center",
+              flexWrap: "wrap",
+              gap: "0.75rem",
             }}
           >
-            <Link
-              href="/predict"
+            <p
               style={{
                 fontSize: "0.78rem",
-                color: "#6B7280",
-                textDecoration: "none",
+                color: "#9CA3AF",
+                margin: 0,
               }}
             >
-              Predict
-            </Link>
-            <Link
-              href="/bulk"
+              © 2026 ShipSight Intelligence. All rights reserved.
+            </p>
+            <div
               style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "0.5rem",
                 fontSize: "0.78rem",
-                color: "#6B7280",
-                textDecoration: "none",
+                color: "#9CA3AF",
               }}
             >
-              Bulk Upload
-            </Link>
-            <span
-              style={{
-                fontSize: "0.78rem",
-                color: "#6B7280",
-              }}
-            >
-              <Globe size={12} style={{ display: "inline", marginRight: 4 }} />
-              v1.0
-            </span>
+              <Globe size={12} />
+              <span>v1.0 · Cross-Border Supply Chain Risk Predictor</span>
+            </div>
           </div>
         </div>
       </footer>

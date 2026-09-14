@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import {
   Ship,
+  Eye,
   Menu,
   X,
   BarChart3,
@@ -85,7 +86,7 @@ export default function Navbar() {
               boxShadow: "0 4px 12px rgba(67,56,202,0.3)",
             }}
           >
-            <Ship size={20} color="white" strokeWidth={2.5} />
+            <Eye size={20} color="white" strokeWidth={2.5} />
           </div>
           <span
             style={{
@@ -104,11 +105,11 @@ export default function Navbar() {
                 WebkitTextFillColor: "transparent",
               }}
             >
-              Safe
+              Sight
             </span>
             <span style={{ color: "#D4A574", fontWeight: 600 }}>
               {" "}
-              AI
+              Intelligence
             </span>
           </span>
         </Link>

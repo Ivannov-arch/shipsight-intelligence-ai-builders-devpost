@@ -10,19 +10,19 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "ShipSafe AI — Cross-Border Supply Chain Risk Predictor",
+  title: "ShipSight Intelligence — Cross-Border Supply Chain Risk Predictor",
   description:
-    "AI-powered customs delay prediction using XGBoost, SHAP explainability, and Google Gemini. Predict shipment risks, understand feature impacts, and get actionable mitigation plans.",
+    "AI-powered customs delay prediction. Predict shipment risks, understand what drives delays, and get actionable mitigation plans — all in seconds.",
   keywords: [
     "supply chain",
     "risk prediction",
     "customs delay",
-    "XGBoost",
-    "SHAP",
-    "Gemini AI",
+    "shipment tracking",
+    "delay prediction",
     "cross-border trade",
+    "supply chain intelligence",
   ],
-  authors: [{ name: "ShipSafe AI Team" }],
+  authors: [{ name: "ShipSight Intelligence Team" }],
 };
 
 export default function RootLayout({

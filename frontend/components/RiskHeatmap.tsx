@@ -66,7 +66,7 @@ export default function RiskHeatmap({
     <th
       onClick={() => handleSort(keyName)}
       style={{
-        padding: "0.75rem 1rem",
+        padding: "0.75rem 0.75rem",
         textAlign: "left",
         fontSize: "0.75rem",
         fontWeight: 700,
@@ -232,7 +232,6 @@ export default function RiskHeatmap({
       {/* Table */}
       <div
         style={{
-          overflowX: "auto",
           padding: "1rem 1.5rem 1.5rem",
         }}
       >
@@ -241,15 +240,23 @@ export default function RiskHeatmap({
             width: "100%",
             borderCollapse: "collapse",
             fontSize: "0.85rem",
+            tableLayout: "fixed",
           }}
         >
+          <colgroup>
+            <col style={{ width: "60px" }} />
+            <col style={{ width: "auto" }} />
+            <col style={{ width: "auto" }} />
+            <col style={{ width: "90px" }} />
+            <col style={{ width: "100px" }} />
+          </colgroup>
           <thead>
             <tr>
               <SortHeader label="Row" keyName="row" />
               <SortHeader label="Origin" keyName="origin" />
               <th
                 style={{
-                  padding: "0.75rem 1rem",
+                  padding: "0.75rem 0.75rem",
                   textAlign: "left",
                   fontSize: "0.75rem",
                   fontWeight: 700,
@@ -258,12 +265,15 @@ export default function RiskHeatmap({
                   color: "#4338CA",
                   borderBottom: "2px solid rgba(212,165,116,0.15)",
                   background: "rgba(238,242,255,0.3)",
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
                 }}
               >
                 Destination
               </th>
               <SortHeader label="Risk" keyName="risk_level" />
-              <SortHeader label="Delay (Days)" keyName="delay_days" />
+              <SortHeader label="Delay" keyName="delay_days" />
             </tr>
           </thead>
           <tbody>
@@ -294,7 +304,7 @@ export default function RiskHeatmap({
               >
                 <td
                   style={{
-                    padding: "0.65rem 1rem",
+                    padding: "0.65rem 0.75rem",
                     borderBottom: "1px solid rgba(212,165,116,0.08)",
                     color: "#6B7280",
                     fontWeight: 500,
@@ -305,26 +315,34 @@ export default function RiskHeatmap({
                 </td>
                 <td
                   style={{
-                    padding: "0.65rem 1rem",
+                    padding: "0.65rem 0.75rem",
                     borderBottom: "1px solid rgba(212,165,116,0.08)",
                     fontWeight: 600,
                     color: "#1E1B4B",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
                   }}
+                  title={r.origin}
                 >
                   {r.origin}
                 </td>
                 <td
                   style={{
-                    padding: "0.65rem 1rem",
+                    padding: "0.65rem 0.75rem",
                     borderBottom: "1px solid rgba(212,165,116,0.08)",
                     color: "#374151",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
                   }}
+                  title={r.destination}
                 >
                   {r.destination}
                 </td>
                 <td
                   style={{
-                    padding: "0.65rem 1rem",
+                    padding: "0.65rem 0.75rem",
                     borderBottom: "1px solid rgba(212,165,116,0.08)",
                   }}
                 >
@@ -355,7 +373,7 @@ export default function RiskHeatmap({
                 </td>
                 <td
                   style={{
-                    padding: "0.65rem 1rem",
+                    padding: "0.65rem 0.75rem",
                     borderBottom: "1px solid rgba(212,165,116,0.08)",
                     fontWeight: 700,
                     color: "#1E1B4B",
@@ -384,3 +402,4 @@ export default function RiskHeatmap({
     </div>
   );
 }
+
