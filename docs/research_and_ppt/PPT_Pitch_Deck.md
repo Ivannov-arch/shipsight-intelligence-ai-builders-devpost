@@ -1,4 +1,4 @@
-# SupplyPulse AI
+# ShipSight Intelligence
 
 > **Predictable Logistics. Transparent Intelligence. Actionable Delivery.**  
 > The Cross-Border Supply Chain Early-Warning System for the Real World.
@@ -7,7 +7,7 @@
 
 # SLIDE 1: Title & Hook
 
-### **SupplyPulse AI**
+### **ShipSight Intelligence**
 ## Stopping Multi-Million Dollar Supply Chain Disasters Before Port Departure
 
 The End of Black-Box Freight Delays: Transparent, Auditable, and Actionable AI for Cross-Border Logistics.
@@ -70,11 +70,11 @@ No logistics manager will reroute a $100k container or spend $15k on emergency a
 
 ### What If AI Could Forecast, Explain, and Prescribe?
 
-**SupplyPulse AI** is the first accessible, hybrid intelligence platform engineered specifically for cross-border exporters, importers, and forwarders.
+**ShipSight Intelligence** is the first accessible, hybrid intelligence platform engineered specifically for cross-border exporters, importers, and forwarders.
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                           The SupplyPulse AI Triad                          │
+│                           The ShipSight Intelligence Triad                          │
 ├───────────────────────┬────────────────────────────┬────────────────────────┤
 │     1. PREDICT        │         2. EXPLAIN         │      3. PRESCRIBE      │
 │  (XGBoost Regressor   │    (Mathematical SHAP      │  (Google Gemini 3.6    │
@@ -212,7 +212,7 @@ We don't replace machine learning with an LLM; we fuse the best of quantitative 
 
 ### The New Standard in Supply Chain Intelligence
 
-| Metric / Dimension | Traditional Guesswork | Enterprise Giants (Project44) | SupplyPulse AI (Our Platform) |
+| Metric / Dimension | Traditional Guesswork | Enterprise Giants (Project44) | ShipSight Intelligence (Our Platform) |
 | :--- | :--- | :--- | :--- |
 | **Annual Cost** | Hidden ($28k+ per failure) | $100,000+ / year | **Freemium / Accessible SaaS** |
 | **Setup & Onboarding** | None (Manual Excel) | 3 to 6 months integration | **Zero Setup (Instant Web & CSV)** |
@@ -229,7 +229,7 @@ We don't replace machine learning with an LLM; we fuse the best of quantitative 
 
 # SLIDE 10: Future Roadmap & Closing Vision
 
-### What's Next for SupplyPulse AI?
+### What's Next for ShipSight Intelligence?
 
 ```
 ┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
@@ -249,11 +249,11 @@ We don't replace machine learning with an LLM; we fuse the best of quantitative 
 
 No more blind spots. No more black-box guesses. No more ruined customer trust.
 
-* **Live Demo:** `supplypulse-ai.vercel.app` *(or localhost:3000)*
-* **Backend API:** `supplypulse-api.onrender.com/docs`
+* **Live Demo:** `ShipSight Intelligence-ai.vercel.app` *(or localhost:3000)*
+* **Backend API:** `ShipSight Intelligence-api.onrender.com/docs`
 * **GitHub Repository:** `github.com/Ivannov-arch/supply-chain-devpost`
 
-> *"SupplyPulse AI: Because knowing a delay is coming is good, but knowing why and how to fix it is everything."*
+> *"ShipSight Intelligence: Because knowing a delay is coming is good, but knowing why and how to fix it is everything."*
 
 ---
 
@@ -266,16 +266,16 @@ No more blind spots. No more black-box guesses. No more ruined customer trust.
 >
 > *They are left flying completely blind with Excel spreadsheets and gut feelings. That is, until an unexpected 14-day customs delay causes an entire container of medical cargo to spoil, destroying customer trust.*
 >
-> *We built **SupplyPulse AI** to fix this. It’s an accessible, hybrid AI early-warning system. It doesn’t just predict whether a shipment will be delayed with 91.6% accuracy — it uses mathematical Explainable AI to show operators exactly WHY the risk is high, and uses Google Gemini 3.6 Flash to prescribe 3 actionable steps to mitigate it before cargo departs.*
+> *We built **ShipSight Intelligence** to fix this. It’s an accessible, hybrid AI early-warning system. It doesn’t just predict whether a shipment will be delayed with 91.6% accuracy — it uses mathematical Explainable AI to show operators exactly WHY the risk is high, and uses Google Gemini 3.6 Flash to prescribe 3 actionable steps to mitigate it before cargo departs.*
 >
-> *With zero enterprise onboarding and drag-and-drop bulk manifest scanning, SupplyPulse AI transforms logistics uncertainty into predictive advantage."*
+> *With zero enterprise onboarding and drag-and-drop bulk manifest scanning, ShipSight Intelligence transforms logistics uncertainty into predictive advantage."*
 
 ### 🛡️ Judge Q&A Defense Cheat Sheet
 
 | Question | Winning Answer Grounded in `initial research.md` |
 | :--- | :--- |
-| **"Why not just ask ChatGPT or Claude to predict delays?"** | LLMs hallucinate numbers and cannot compute multi-variate statistical distributions over tabular logistics data. In SupplyPulse AI, XGBoost owns all numerical forecasting. Gemini is only used as a domain-tuned reasoning narrator to turn math into action. |
-| **"How is this different from Project44 or FourKites?"** | Enterprise giants are cost-prohibitive ($100k+/yr) and require 6-month ERP integrations. They ignore SMEs. SupplyPulse AI has zero setup time, accepts standard CSV spreadsheets, and provides 100% explainability rather than a black-box score. |
+| **"Why not just ask ChatGPT or Claude to predict delays?"** | LLMs hallucinate numbers and cannot compute multi-variate statistical distributions over tabular logistics data. In ShipSight Intelligence, XGBoost owns all numerical forecasting. Gemini is only used as a domain-tuned reasoning narrator to turn math into action. |
+| **"How is this different from Project44 or FourKites?"** | Enterprise giants are cost-prohibitive ($100k+/yr) and require 6-month ERP integrations. They ignore SMEs. ShipSight Intelligence has zero setup time, accepts standard CSV spreadsheets, and provides 100% explainability rather than a black-box score. |
 | **"How does the system handle cold-start or new routes?"** | We trained on 10,000 real global shipments from USAID SCMS with robust categorical encoders that fall back to generalized cluster attributes (`-1` unknown handling), and we incorporate an active user feedback loop in Supabase to capture actual delivery outcomes for continuous retraining. |
 | **"What is your commercialization roadmap?"** | Freemium tier for micro-exporters (up to 15 shipments/mo), B2B SaaS tiers ($49–$199/mo) for mid-market forwarders using bulk scanning, and API licenses ($500+/mo) for warehouse management systems and freight TMS integration. |
 

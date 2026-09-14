@@ -110,7 +110,7 @@ export default function Navbar() {
             textDecoration: "none",
             cursor: "pointer",
           }}
-          title="SupplyPulse (Click 5 times for Developer Mode)"
+          title="ShipSight Intelligence (Click 5 times for Developer Mode)"
         >
           <div
             style={{

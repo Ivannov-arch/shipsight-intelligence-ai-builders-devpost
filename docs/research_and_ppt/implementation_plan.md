@@ -11,7 +11,7 @@ Build a discreet **Developer Mode** that allows users/judges to unlock developer
 > The default passcode will be set to `devpost2026` (configurable via `NEXT_PUBLIC_DEV_PASSCODE`).
 > 
 > **Easter Egg Trigger**:
-> - Clicking the "SupplyPulse" logo in the Navbar **5 times within 3 seconds**, OR
+> - Clicking the "ShipSight Intelligence" logo in the Navbar **5 times within 3 seconds**, OR
 > - Pressing keyboard shortcut `Ctrl + Shift + D` (or `Cmd + Shift + D` on Mac).
 
 ---
@@ -117,7 +117,7 @@ Build a discreet **Developer Mode** that allows users/judges to unlock developer
 
 ### Manual Verification
 1. Open web application at `http://localhost:3000`.
-2. Click the "SupplyPulse" logo 5 times:
+2. Click the "ShipSight Intelligence" logo 5 times:
    - Verify Developer Authentication modal appears.
    - Enter `devpost2026`, verify Dev Mode turns active and indicator badge appears in navbar.
 3. Navigate to `/predict`:

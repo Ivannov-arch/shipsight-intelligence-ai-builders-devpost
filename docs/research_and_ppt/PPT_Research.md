@@ -1,6 +1,6 @@
 # Comprehensive Presentation Research: Cross-Border Supply Chain Early Warning System
 
-> **Project Name:** SupplyPulse AI (Cross-Border Supply Chain Risk & Delay Predictor)  
+> **Project Name:** ShipSight Intelligence (Cross-Border Supply Chain Risk & Delay Predictor)  
 > **Repository:** `Ivannov-arch/supply-chain-devpost`  
 > **Target Track / Competition:** Devpost AI Builders Hackathon  
 > **Document Purpose:** Complete research synthesis covering background, problem space, architecture, machine learning models, XAI, generative reasoning, impact, and roadmap for the 10-slide presentation deck.
@@ -13,7 +13,7 @@ Global supply chains are notoriously fragile. A single customs clearance hold-up
 
 While enterprise conglomerates deploy multi-million-dollar supply chain visibility platforms (such as Project44, FourKites, or Everstream AI), **90% of global cross-border trade participants are Small and Medium Enterprises (SMEs)**. These businesses cannot afford six-figure annual subscriptions or six-month enterprise integration cycles. Instead, they rely on static spreadsheets, manual gut feelings, and reactive crisis management.
 
-**SupplyPulse AI** solves this critical asymmetry. It is an accessible, hybrid AI-powered early warning and decision intelligence platform that:
+**ShipSight Intelligence** solves this critical asymmetry. It is an accessible, hybrid AI-powered early warning and decision intelligence platform that:
 1. **Predicts** shipment delay duration (days) and risk categories (High vs. Low) using tuned Gradient Boosting (`XGBoost`).
 2. **Explains** the root causes behind every forecast using mathematical Explainable AI (`SHAP`), eliminating the dangerous "black-box" dilemma.
 3. **Prescribes** contextual, operational mitigation playbooks via Generative AI (`Google Gemini 3.6 Flash`).
@@ -29,7 +29,7 @@ While enterprise conglomerates deploy multi-million-dollar supply chain visibili
 - **The Emerging Market Reality:** Cross-border trade routes through developing corridors (e.g., Southeast Asia, Sub-Saharan Africa, Latin America) face unpredictable customs dwell times, variable vendor Incoterms, and volatile freight tariff spikes.
 
 ### Real-World Grounding: The USAID SCMS Dataset
-Rather than relying on toy synthetic datasets, SupplyPulse AI is trained and validated on the **USAID Supply Chain Management System (SCMS) Delivery History Dataset**:
+Rather than relying on toy synthetic datasets, ShipSight Intelligence is trained and validated on the **USAID Supply Chain Management System (SCMS) Delivery History Dataset**:
 - **Volume:** Over 10,000 verified international shipment transactions.
 - **Scope:** Real-world cross-border shipments of vital health commodities (e.g., Antiretrovirals, Malaria treatments, lab supplies) delivered across multiple developing nations across Africa, Asia, and the Americas.
 - **Complex Attributes:** Real commercial features including Vendor Incoterms (`EXW`, `FCA`, `DDU`, `CIP`), Shipment Modes (`Air`, `Sea`, `Truck`, `Air Charter`), Freight Costs in USD, Line Item Value, Unit Pricing, Packaging Dimensions, and Actual Recorded Delays.
@@ -53,7 +53,7 @@ Cross-border logistics operators and SME traders operate **blindly into the futu
 
 ## 4. Target Users & Personas
 
-SupplyPulse AI specifically targets the underserved operators who manage high-stakes freight:
+ShipSight Intelligence specifically targets the underserved operators who manage high-stakes freight:
 
 ### Primary Persona: Cross-Border SME Exporters & Importers
 - **Profile:** Mid-market traders moving sensitive cargo (pharmaceuticals, perishables, electronics, components).
@@ -73,11 +73,11 @@ SupplyPulse AI specifically targets the underserved operators who manage high-st
 
 ## 5. Solution Overview: The Hybrid AI Early-Warning Paradigm
 
-SupplyPulse AI introduces a **Hybrid AI Triad** that separates numerical prediction from natural language reasoning:
+ShipSight Intelligence introduces a **Hybrid AI Triad** that separates numerical prediction from natural language reasoning:
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                            SupplyPulse AI Engine                            │
+│                            ShipSight Intelligence Engine                            │
 ├───────────────────────┬────────────────────────────┬────────────────────────┤
 │   1. QUANTITATIVE ML  │     2. MATHEMATICAL XAI    │  3. GENERATIVE REASON  │
 │  (XGBoost Regressor & │    (SHAP TreeExplainer)    │ (Google Gemini 3.6     │
@@ -213,7 +213,7 @@ The model evaluates 18 critical supply chain features:
 | **Probability Threshold** | Classification Cutoff | F1 / Cost Optimization | 0.50 | **0.51 (Tuned)** | **OPTIMIZED** |
 
 ### Why This Hybrid Architecture Beats Alternative Approaches
-1. **Zero Hallucination on Numbers:** Pure LLMs (like GPT-4 or Gemini alone) fail at mathematical regression over multi-column tabular records. In SupplyPulse AI, all quantitative outputs (`delay_days`, `risk_flag`) are calculated strictly by mathematical gradient boosted trees.
+1. **Zero Hallucination on Numbers:** Pure LLMs (like GPT-4 or Gemini alone) fail at mathematical regression over multi-column tabular records. In ShipSight Intelligence, all quantitative outputs (`delay_days`, `risk_flag`) are calculated strictly by mathematical gradient boosted trees.
 2. **Zero Black-Box Stagnation:** Classical XGBoost deployments output obscure probabilities that end-users ignore. By chaining TreeSHAP and Gemini 3.6 Flash, the system translates mathematical coefficients into operational wisdom.
 
 ---
@@ -227,7 +227,7 @@ The model evaluates 18 critical supply chain features:
 
 ### Competitive Positioning Matrix
 
-| Dimension | Manual Spreadsheets / Gut Feel | Enterprise Giants (Project44 / FourKites) | SupplyPulse AI (Our Solution) |
+| Dimension | Manual Spreadsheets / Gut Feel | Enterprise Giants (Project44 / FourKites) | ShipSight Intelligence (Our Solution) |
 | :--- | :--- | :--- | :--- |
 | **Cost** | Free (but catastrophic error cost) | $100k - $250k / year | **Affordable SaaS / Freemium for SMEs** |
 | **Setup Time** | Immediate | 3 to 6 months enterprise onboarding | **Instant (Zero integration, Bulk CSV ready)** |
@@ -243,7 +243,7 @@ The model evaluates 18 critical supply chain features:
 
 *(Grounded in `initial research.md` Section 7)*
 
-SupplyPulse AI addresses the enterprise pricing barrier by introducing a scalable, tiered commercial model:
+ShipSight Intelligence addresses the enterprise pricing barrier by introducing a scalable, tiered commercial model:
 
 1. **Freemium Tier (Self-Serve for Micro-Exporters):**
    - Free access to single-shipment risk checks and basic lead time forecasting (up to 15 queries/month).
@@ -270,7 +270,7 @@ SupplyPulse AI addresses the enterprise pricing barrier by introducing a scalabl
 | **1. Limited/Imbalanced Training Data** | Medium | Trained on the mature, real-world **USAID SCMS dataset** (10,000+ international records). Preprocessed with optimal decision threshold tuning (**0.51**) to maximize recall (72.5%) for rare high-risk delays. |
 | **2. Heavy Inference on Free Cloud Hosting** | High | Avoided bulky deep learning architectures. Chained lightweight, compiled **XGBoost trees** (under 1.5MB total disk size) with offline training. FastAPI runs cold inference in under 50ms on Render/Railway free tiers. |
 | **3. User Trust Deficit (Black-Box Skepticism)** | High | Integrated **TreeSHAP mathematical explainability** showing exact percentage factors behind risk, paired with **Gemini's deterministic prescriptive playbooks** rather than opaque raw scores. |
-| **4. Enterprise Competitor Encroachment** | Medium | Enterprise giants (Project44, FourKites) cannot economically service small-ticket SME accounts due to high sales overhead. SupplyPulse AI maintains a moat through **zero-integration bulk CSV scanning** and emerging market focus (e.g., ASEAN & cross-border maritime corridors). |
+| **4. Enterprise Competitor Encroachment** | Medium | Enterprise giants (Project44, FourKites) cannot economically service small-ticket SME accounts due to high sales overhead. ShipSight Intelligence maintains a moat through **zero-integration bulk CSV scanning** and emerging market focus (e.g., ASEAN & cross-border maritime corridors). |
 
 ---
 
@@ -280,9 +280,9 @@ SupplyPulse AI addresses the enterprise pricing barrier by introducing a scalabl
 
 > *"Judges, every single year, unexpected supply chain disruptions wipe out over $1.6 trillion from the global economy — causing dead inventory, halted factories, and ruined contracts. Mega-corporations survive because they can spend hundreds of thousands of dollars on enterprise tracking software. But what about the other 90% of trade — the small and medium exporters, importers, and regional forwarders? They are left flying completely blind with Excel spreadsheets and gut instinct.*
 >
-> *We built **SupplyPulse AI** to democratize supply chain intelligence. Our platform doesn't just predict whether a shipment will be delayed with 91.6% accuracy — it uses mathematical Explainable AI to show operators exactly WHY it will happen, and uses Gemini 3.6 Flash to prescribe exactly HOW to fix it before cargo leaves the dock.*
+> *We built **ShipSight Intelligence** to democratize supply chain intelligence. Our platform doesn't just predict whether a shipment will be delayed with 91.6% accuracy — it uses mathematical Explainable AI to show operators exactly WHY it will happen, and uses Gemini 3.6 Flash to prescribe exactly HOW to fix it before cargo leaves the dock.*
 >
-> *Trained on 10,000 real global shipments and capable of scanning hundreds of consignments from a single CSV upload, SupplyPulse AI transforms logistics uncertainty into an unfair competitive advantage. Thank you!"*
+> *Trained on 10,000 real global shipments and capable of scanning hundreds of consignments from a single CSV upload, ShipSight Intelligence transforms logistics uncertainty into an unfair competitive advantage. Thank you!"*
 
 ---
 

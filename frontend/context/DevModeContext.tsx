@@ -13,7 +13,7 @@ interface DevModeContextType {
 const DevModeContext = createContext<DevModeContextType | undefined>(undefined);
 
 const DEV_PASSCODE = process.env.NEXT_PUBLIC_DEV_PASSCODE || "devpost2026";
-const STORAGE_KEY = "supplypulse_dev_mode_active";
+const STORAGE_KEY = "shipsight_dev_mode_active";
 
 export function DevModeProvider({ children }: { children: React.ReactNode }) {
   const [isDevMode, setIsDevMode] = useState<boolean>(false);

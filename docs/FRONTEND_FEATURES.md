@@ -1,6 +1,6 @@
 # Frontend Features & Client-Side Application Logic
 
-This document details the complete feature set, interactive UI components, and client-side business logic powering the **SupplyPulse** Next.js application.
+This document details the complete feature set, interactive UI components, and client-side business logic powering the **ShipSight Intelligence** Next.js application.
 
 ---
 
@@ -10,7 +10,7 @@ This document details the complete feature set, interactive UI components, and c
 A discreet developer mode allowing judges and developers to unlock privilege mode, browse 2,908 historical benchmark shipments from the USAID SCMS dataset, and run side-by-side model vs ground-truth evaluations.
 
 ### Application & Business Logic
-- **LocalStorage Sync & SSR Hydration:** State is persisted across browser sessions in `localStorage` (`supplypulse_dev_mode_active`) with hydration safeguards preventing React server-client mismatches.
+- **LocalStorage Sync & SSR Hydration:** State is persisted across browser sessions in `localStorage` (`shipsight_dev_mode_active`) with hydration safeguards preventing React server-client mismatches.
 - **Passcode Authentication:** Local verification using environment variable (`NEXT_PUBLIC_DEV_PASSCODE`) or default passcode (`devpost2026`).
 - **Revocation / Logout:** Clean state wiping from both React state and browser storage.
 

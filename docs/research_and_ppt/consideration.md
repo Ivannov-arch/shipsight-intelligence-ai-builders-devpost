@@ -1,6 +1,6 @@
 # Strategic Considerations & Competitive Edge
 
-This document outlines key technical and product differentiators designed to maximize hackathon evaluation scores for **SupplyPulse**.
+This document outlines key technical and product differentiators designed to maximize hackathon evaluation scores for **ShipSight Intelligence**.
 
 ---
 

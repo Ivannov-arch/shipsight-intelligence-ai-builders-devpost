@@ -1,11 +1,11 @@
-# SupplyPulse AI — Pitch Deck (Lite Version)
+# ShipSight Intelligence — Pitch Deck (Lite Version)
 > **Compact & High-Impact Slide Deck (10 Slides)**  
 > *Engineered for visual clarity, minimal text density, and maximum audience engagement.*
 
 ---
 
 # SLIDE 1: Title & Hook
-## **SupplyPulse AI**
+## **ShipSight Intelligence**
 ### Stop Multi-Million Dollar Supply Chain Delays *Before* Cargo Leaves the Port.
 
 * **What it is:** The first accessible, Explainable AI early-warning system for cross-border logistics.
@@ -40,7 +40,7 @@
 ---
 
 # SLIDE 4: The Solution
-### The SupplyPulse AI Triad: Predict • Explain • Prescribe
+### The ShipSight Intelligence Triad: Predict • Explain • Prescribe
 
 ```
 [ 1. PREDICT (XGBoost) ] ──> [ 2. EXPLAIN (TreeSHAP) ] ──> [ 3. PRESCRIBE (Gemini 3.6) ]
@@ -56,7 +56,7 @@
 # SLIDE 5: Target Users
 ### Empowering the Overlooked 90% of Global Trade
 
-| User Segment | Core Pain Point | How SupplyPulse AI Solves It |
+| User Segment | Core Pain Point | How ShipSight Intelligence Solves It |
 | :--- | :--- | :--- |
 | **SME Exporters / Importers** | Stockouts & SLA penalty risks | 2–4 week early warning to adjust safety buffers. |
 | **Mid-Tier Freight Forwarders** | Client churn from surprise delays | Instant risk scoring to advise routes & defend margins. |
@@ -113,7 +113,7 @@
 # SLIDE 9: Impact & Value Proposition
 ### Transforming Guesswork into Measurable ROI
 
-| Dimension | Manual Spreadsheets | Enterprise Platforms | **SupplyPulse AI** |
+| Dimension | Manual Spreadsheets | Enterprise Platforms | **ShipSight Intelligence** |
 | :--- | :--- | :--- | :--- |
 | **Cost** | Hidden ($28k+ failure) | $100,000+/yr | **Freemium / $49-$199/mo** |
 | **Onboarding** | Manual Excel | 3–6 Months ERP setup | **Instant (Zero Integration)** |
@@ -135,6 +135,6 @@
 ---
 
 ### **Never Fly Blind into Port Delays Again.**
-* **Demo:** `supplypulse-ai.vercel.app`
+* **Demo:** `ShipSight Intelligence-ai.vercel.app`
 * **Repo:** `github.com/Ivannov-arch/supply-chain-devpost`
 * **Pitch Line:** *"Predicting a delay is useful. Knowing why and how to fix it is everything."*

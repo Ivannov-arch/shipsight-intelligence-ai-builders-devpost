@@ -99,7 +99,7 @@ isk_label, shap_top_features, ction_plan)
 
 30. [x] Set default passcode `devpost2026` (configurable via `NEXT_PUBLIC_DEV_PASSCODE`)
 31. [x] Implement Easter Egg Trigger:
-    - Click "SupplyPulse" logo in Navbar 5 times within 3 seconds, OR
+    - Click "ShipSight Intelligence" logo in Navbar 5 times within 3 seconds, OR
     - Press keyboard shortcut `Ctrl + Shift + D` (or `Cmd + Shift + D` on Mac)
 32. [x] Create `DevModeContext.tsx` & `DevAuthModal.tsx` for state management & authentication prompt
 33. [x] Add floating indicator badge `[ 🛠️ DEV BENCHMARK MODE ]` with exit button in Navbar when active

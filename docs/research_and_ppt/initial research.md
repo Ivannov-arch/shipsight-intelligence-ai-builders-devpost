@@ -1,6 +1,6 @@
 # Initial Research & Brainstorming - Supply Chain Disruption & Delay Prediction
 
-This document summarizes the core proposal, business model, dataset selection, system architecture, and execution plan for **SupplyPulse** (Supply Chain Disruption & Delay Prediction System).
+This document summarizes the core proposal, business model, dataset selection, system architecture, and execution plan for **ShipSight Intelligence** (Supply Chain Disruption & Delay Prediction System).
 
 ---
 
@@ -148,6 +148,6 @@ An AI-powered Early Warning & Delay Prediction System tailored for cross-border 
 
 > "Every year, supply chain disruptions cost businesses billions of dollars in delayed shipments, stockouts, and halted production. While global conglomerates have expensive enterprise tools to monitor risk, millions of SMEs and exporters still rely on guesswork and manual spreadsheets.
 > 
-> We built **SupplyPulse** — an AI-powered early warning system that predicts delay days and disruption risks from logistics parameters, explains the exact risk drivers using Explainable AI (SHAP), and generates instant mitigation strategies powered by Gemini.
+> We built **ShipSight Intelligence** — an AI-powered early warning system that predicts delay days and disruption risks from logistics parameters, explains the exact risk drivers using Explainable AI (SHAP), and generates instant mitigation strategies powered by Gemini.
 > 
-> Designed specifically for SMEs, SupplyPulse makes enterprise-grade logistics intelligence accessible, fast, and actionable."
+> Designed specifically for SMEs, ShipSight Intelligence makes enterprise-grade logistics intelligence accessible, fast, and actionable."

@@ -95,7 +95,7 @@ async def _log_prediction(input_data: PredictionRequest, result: dict):
 def root():
     return {
         "status": "healthy",
-        "service": "SupplyPulse AI API",
+        "service": "ShipSight Intelligence API",
         "version": "1.0.0",
         "uptime": "active",
     }

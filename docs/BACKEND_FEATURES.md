@@ -1,6 +1,6 @@
 # Backend Features & Server-Side Logic Reference
 
-This document details the backend service architecture, machine learning inference pipeline, generative AI integration, database logging, and API routers powering the **SupplyPulse** FastAPI application.
+This document details the backend service architecture, machine learning inference pipeline, generative AI integration, database logging, and API routers powering the **ShipSight Intelligence** FastAPI application.
 
 ---
 

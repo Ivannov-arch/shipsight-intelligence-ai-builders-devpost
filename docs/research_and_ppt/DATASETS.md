@@ -1,4 +1,4 @@
-# Dataset Audit & Inventory: SupplyPulse AI
+# Dataset Audit & Inventory: ShipSight Intelligence
 
 > **Document Status:** Updated Post-Phase 4 Implementation  
 > **Primary Active Dataset:** USAID SCMS Delivery History Dataset (`SCMS_Delivery_History_Dataset.csv`)

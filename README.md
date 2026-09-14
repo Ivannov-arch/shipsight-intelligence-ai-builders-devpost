@@ -1,4 +1,4 @@
-# SupplyPulse AI 🚢⚡
+# ShipSight Intelligence 🚢⚡
 
 > **Cross-Border Supply Chain Early Warning & Decision Intelligence Platform**  
 > *The End of Black-Box Logistics Delays: Predict, Explain, and Mitigate Before Port Departure.*
@@ -16,7 +16,7 @@
 
 Global supply chain disruptions cost the economy over **$1.6 trillion annually**. While enterprise conglomerates deploy six-figure tracking systems, **90% of global cross-border traders are Small and Medium Enterprises (SMEs)**. SMEs are forced to rely on static spreadsheets, gut feelings, and reactive crisis management—leading to unpredicted port hold-ups, spoiled perishables, $28,000+ SLA breach penalties, and lost customer trust.
 
-**SupplyPulse AI** bridges this gap with an accessible, **Hybrid AI Triad**:
+**ShipSight Intelligence** bridges this gap with an accessible, **Hybrid AI Triad**:
 1. **Predicts** exact delay duration (days) and risk levels (High vs. Low) using tuned **XGBoost** models.
 2. **Explains** root risk drivers using game-theoretic **TreeSHAP** mathematical feature attribution (0% black-box opacity).
 3. **Prescribes** tactical operational playbooks via **Google Gemini 3.6 Flash**.
@@ -230,10 +230,10 @@ To build and run the backend using Docker:
 
 ```bash
 # Build Docker image
-docker build -t supplypulse-backend .
+docker build -t ShipSight Intelligence-backend .
 
 # Run container
-docker run -d -p 8000:8000 --env-file .env supplypulse-backend
+docker run -d -p 8000:8000 --env-file .env ShipSight Intelligence-backend
 ```
 
 ---
