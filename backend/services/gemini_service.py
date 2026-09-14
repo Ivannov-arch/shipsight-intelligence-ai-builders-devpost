@@ -73,7 +73,7 @@ def generate_action_plan(prediction: dict, model_name: str | None = None) -> str
         model_name=target_model,
         generation_config=genai.GenerationConfig(
             temperature=0.3,
-            max_output_tokens=512,
+            max_output_tokens=2048,
         ),
     )
 
