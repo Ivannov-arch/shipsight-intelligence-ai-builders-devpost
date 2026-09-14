@@ -1,130 +1,103 @@
-Berikut dataset **spesifik** yang paling cocok untuk MVP Ide 7: *prediksi delay + risk scoring supply chain untuk SME/eksportir*.
+# Dataset Audit & Inventory: SupplyPulse AI
 
-## Pilihan utama: Kaggle
+> **Document Status:** Updated Post-Phase 4 Implementation  
+> **Primary Active Dataset:** USAID SCMS Delivery History Dataset (`SCMS_Delivery_History_Dataset.csv`)
 
-### 1. DataCo Supply Chain Dataset — terbaik untuk MVP awal
-**Link:** [https://www.kaggle.com/datasets/evilspirit05/datasupplychain](https://www.kaggle.com/datasets/evilspirit05/datasupplychain)
+---
 
-- Sekitar **140.000+ record** pengiriman dan **53 kolom**.
-- Memiliki target yang sangat siap pakai: `Late_delivery_risk` dan `Delivery Status`.
-- Fitur mencakup waktu pengiriman aktual vs terjadwal, lokasi pelanggan, kategori produk, metode pembayaran, nilai transaksi, profit, dan status delivery.
-- Lisensi tercantum **MIT**, sehingga relatif aman untuk eksperimen dan MVP. [kaggle](https://www.kaggle.com/datasets/evilspirit05/datasupplychain)
+## 🟢 1. PRIMARY ACTIVE DATASET (100% Used in Production)
 
-**Pakai ini jika MVP-mu adalah:**  
-> “Prediksi apakah sebuah shipment berisiko terlambat.”
+### **USAID SCMS Delivery History Dataset**
+- **Source Link (Kaggle):** [USAID Supply Chain Shipment Pricing Data on Kaggle](https://www.kaggle.com/datasets/dileep070/supply-chain-analysis)
+- **Official Agency Source:** [USAID Global Health Supply Chain Program (GHSC-PSM)](https://www.ghsupplychain.org/)
+- **File Location:** [`ml/datasets/SCMS_Delivery_History_Dataset.csv`](file:///c:/Coding/Hackathons/Devpost_AI%20Builders/ml/datasets/SCMS_Delivery_History_Dataset.csv)
+- **Processed Benchmark File:** [`backend/data/scms_benchmark.csv`](file:///c:/Coding/Hackathons/Devpost_AI%20Builders/backend/data/scms_benchmark.csv)
+- **Database Table:** Supabase `devpost_name_ai_builders.scms_benchmark` & `prediction_logs`
+- **Volume:** **10,000+ real-world international shipment records** across Africa, Asia, and the Americas.
 
-**Target model:**  
-- Klasifikasi: `Late_delivery_risk` (0/1)  
-- Alternatif: klasifikasi `Delivery Status` (late / on-time / early)
 
-**Catatan penting:** jangan gunakan `Days for shipping (real)` sebagai input bila targetnya `Late_delivery_risk`, karena itu berpotensi data leakage—informasi aktual baru diketahui setelah shipment selesai.
+#### Why This Dataset Was Selected:
+1. **Real Commercial Features:** Contains authentic commercial supply chain fields including `Country`, `Managed By`, `Fulfill Via`, `Vendor INCO Term` (`EXW`, `FCA`, `DDU`, `CIP`), `Shipment Mode` (`Air`, `Ocean`, `Truck`, `Air Charter`), `Product Group`, `Sub Classification`, `Vendor`, `Weight (Kilograms)`, `Freight Cost (USD)`, `Line Item Value`, `Line Item Quantity`, and `Pack Price`.
+2. **Engineered Features:** Used to construct `planned_lead_time`, `freight_per_kg`, `value_per_unit`, `sched_month`, and `sched_dayofweek`.
+3. **Model Artifacts Trained:**
+   - `model_delay.json` (XGBoost Regressor — MAE: 3.57 days)
+   - `model_risk.json` (XGBoost Classifier — Accuracy: 91.6%, Sensitivity: 72.5%, Threshold: 0.51)
+   - `explainer.pkl` (TreeSHAP Explainer)
+   - `label_encoders.pkl` (8 LabelEncoders)
+4. **Dev Mode Benchmark:** Powers the Dev Mode Benchmark Inspector (`/api/dev/records`) allowing side-by-side comparison of 2,908 historical consignments against ML predictions.
 
-***
+---
 
-### 2. Cross-Border Trade & Customs Delay Dataset — terbaik untuk narasi ekspor-impor
-**Link:** [https://www.kaggle.com/datasets/ziya07/cross-border-trade-and-customs-delay-dataset](https://www.kaggle.com/datasets/ziya07/cross-border-trade-and-customs-delay-dataset)
+## 🟡 2. SECONDARY / MACRO DATASETS (Evaluated & Kept as Reference)
 
-- **10.000+ shipment record** untuk perdagangan lintas negara.
-- Memiliki dua target yang langsung relevan:
-  - `Customs_Delay_Days` untuk prediksi jumlah hari keterlambatan.
-  - `Risk_Flag` untuk klasifikasi risiko.
-- Fiturnya mencakup origin/destination country, transport mode (termasuk laut), carrier, jenis kargo, detail inspeksi bea cukai, compliance score, prior offense count, dan teks alasan delay.
-- Berlisensi **CC0 / Public Domain**, jadi gratis dan paling aman untuk dipakai/demo. [kaggle](https://www.kaggle.com/datasets/ziya07/cross-border-trade-and-customs-delay-dataset)
+### **`export.csv` — Weekly Freight Indicators (data.gov)**
+- **File Location:** [`ml/datasets/export.csv`](file:///c:/Coding/Hackathons/Devpost_AI%20Builders/ml/datasets/export.csv) (33.6 KB, 442 rows)
+- **Source:** U.S. Bureau of Transportation Statistics / data.gov
 
-**Pakai ini jika MVP-mu adalah:**  
-> “Early-warning untuk eksportir: prediksi keterlambatan customs dan risiko shipment lintas negara.”
+#### ❓ Why Isn't `export.csv` Used for Primary ML Model Training?
+* **Macro Weekly Trends vs. Consignment-Level Attributes:** `export.csv` contains high-level **macro weekly freight index percentages** (e.g., *"Freight Rail Intermodal: -7% change from baseline"* for week 1 of 2020).
+* **Lacks Consignment-Level Features:** This file **does NOT** contain origin/destination country, vendor names, Incoterms, cargo weight, line item value, or individual shipment lead times.
+* **ML Model Limitation:** XGBoost cannot predict a delay duration for a specific pharmaceutical or electronics shipment (e.g., from Aurobindo Pharma to Nigeria) purely from macro weekly rail percentage changes.
+* **Future Roadmap Role (Phase 2/3):** This dataset is preserved in the repository as a candidate external macro signal overlay on future trend dashboards.
 
-**Ini paling cocok untuk positioning ASEAN/SME**, walaupun datanya disimulasikan dan tidak khusus Asia Tenggara.
+---
 
-***
+### **`trade_customs_dataset.csv` — Cross-Border Trade & Customs Delay Dataset**
+- **File Location:** [`ml/datasets/trade_customs_dataset.csv`](file:///c:/Coding/Hackathons/Devpost_AI%20Builders/ml/datasets/trade_customs_dataset.csv) (1.87 MB)
+- **Role:** Evaluated during initial EDA exploration phase. Kept as a secondary benchmark baseline for synthetic customs clearance testing.
 
-### 3. Supply Chain Disruptions (2015–2024) — pelengkap untuk layer disruption
-**Link:** [https://www.kaggle.com/datasets/devpassive/supply-chain-disruptions-2015-2024](https://www.kaggle.com/datasets/devpassive/supply-chain-disruptions-2015-2024)
+---
 
-- Dataset ini dideskripsikan sebagai **sinyal gangguan tingkat pelabuhan mingguan**, bersama freight rates dan delay, dari 2015–2024. [kaggle](https://www.kaggle.com/datasets/devpassive/supply-chain-disruptions-2015-2024/code)
-- Cocok sebagai layer tambahan untuk dashboard: tren gangguan, alert per pelabuhan, atau forecasting disruption.
+### **`supply_chain_data.csv` — Generic Supply Chain Dataset**
+- **File Location:** [`ml/datasets/supply_chain_data.csv`](file:///c:/Coding/Hackathons/Devpost_AI%20Builders/ml/datasets/supply_chain_data.csv) (21.0 KB)
+- **Role:** Small sample dataset used during initial feature engineering concept testing before switching to USAID SCMS.
 
-**Catatan:** halaman Kaggle sedang gagal dimuat dari sumber yang saya cek, jadi sebelum memilihnya cek langsung kolom, lisensi, dan file yang tersedia di akun Kaggle-mu. [kaggle](https://www.kaggle.com/datasets/devpassive/supply-chain-disruptions-2015-2024)
+---
 
-***
+## 📋 Summary Table of Workspace Datasets
 
-## Pilihan utama: data.gov
+| File Name | File Path | Size | Status | Primary Usage / Role |
+| :--- | :--- | :---: | :---: | :--- |
+| **`SCMS_Delivery_History_Dataset.csv`** | `ml/datasets/` | 3.78 MB | 🟢 **ACTIVE** | **Primary ML Training Dataset** (XGBoost, SHAP, Supabase) |
+| **`scms_benchmark.csv`** | `backend/data/` | 494 KB | 🟢 **ACTIVE** | **Backend Dev Mode Benchmark** (2,908 filtered rows) |
+| **`export.csv`** | `ml/datasets/` | 33.6 KB | 🟡 Reference | Macro weekly freight indicators (Data.gov) |
+| **`trade_customs_dataset.csv`** | `ml/datasets/` | 1.87 MB | 🟡 Reference | Initial EDA customs delay exploration dataset |
+| **`supply_chain_data.csv`** | `ml/datasets/` | 21.0 KB | 🟡 Reference | Early prototyping sample dataset |
 
-### 4. Supply Chain and Freight Indicators — indikator supply chain resmi
-**Link:** [https://catalog.data.gov/dataset/supply-chain-and-freight-indicators](https://catalog.data.gov/dataset/supply-chain-and-freight-indicators)
+---
 
-- Dataset resmi dari **U.S. Department of Transportation / Bureau of Transportation Statistics**.
-- Mencakup empat kelompok indikator:
-  - Aktivitas pelabuhan di dalam gerbang (*inside the gate*).
-  - Kondisi di luar pelabuhan (*outside the gate*).
-  - Pergerakan freight.
-  - Tenaga kerja dan kapasitas transportasi.
-- Tersedia resource termasuk **CSV**, JSON, dan XML; dataset terakhir diperbarui pada September 2026. [catalog.data](https://catalog.data.gov/dataset/supply-chain-and-freight-indicators)
+## 🚀 3. FUTURE EXPANSION DATASETS (External Reference Sources for Future Model Training)
 
-**Pakai ini untuk:**  
-- Memberi **konteks eksternal** pada prediksi: apakah freight activity atau kapasitas pelabuhan sedang terganggu.
-- Membuat dashboard tren supply-chain, bukan sebagai dataset label shipment per-order utama.
+*(Curated collection of external datasets for potential specialized AI logistics model development in future phases)*
 
-***
+### 1. **DataCo Supply Chain Dataset (Kaggle)**
+- 🌐 **Link:** [DataCo Supply Chain Dataset on Kaggle](https://www.kaggle.com/datasets/evilspirit05/datasupplychain)
+- 📊 **Size / Scope:** ~180,000+ shipment records with 53 attributes.
+- 🎯 **Potential Model Use Cases:**
+  - Train **E-Commerce & Retail Shipping Risk** models (`Late_delivery_risk`).
+  - Train **Fraud & Payment Risk Detection** models for international cross-border transactions.
 
-### 5. Freight Indicators (Weekly) — ringan dan mudah untuk time series
-**Link dataset:** [https://catalog.data.gov/dataset/freight-indicators-weekly](https://catalog.data.gov/dataset/freight-indicators-weekly)  
-**CSV langsung:** [https://data.transportation.gov/api/views/h7pv-kjj5/rows.csv?accessType=DOWNLOAD](https://data.transportation.gov/api/views/h7pv-kjj5/rows.csv?accessType=DOWNLOAD)
+### 2. **Global Supply Chain Disruptions 2015–2024 (Kaggle)**
+- 🌐 **Link:** [Global Supply Chain Disruptions on Kaggle](https://www.kaggle.com/datasets/devpassive/supply-chain-disruptions-2015-2024)
+- 📊 **Size / Scope:** Weekly port-level disruption signals, ocean freight tariffs, and disruption indices.
+- 🎯 **Potential Model Use Cases:**
+  - Train **Port Congestion Forecasting** models (predicting container dwell times per maritime port).
+  - Train **Freight Rate Spike Forecasters**.
 
-- Mengandung tiga indikator freight mingguan dibanding baseline pra-COVID.
-- Secara eksplisit ditujukan untuk akses dan penggunaan publik. [catalog.data](https://catalog.data.gov/dataset/freight-indicators-weekly)
-- CSV dan data dictionary tersedia melalui endpoint resmi Department of Transportation. [catalog.data](https://catalog.data.gov/dataset/freight-indicators-weekly/resource/e4d0911c-54d6-461d-96a7-6549904fa4be)
+### 3. **Open-Meteo Historical & Real-Time Weather API**
+- 🌐 **Link:** [Open-Meteo Historical Marine & Weather API](https://open-meteo.com/en/docs/historical-weather-api)
+- 📊 **Size / Scope:** Open marine weather telematics API (wind speeds, wave heights, storm alerts) without API key requirements.
+- 🎯 **Potential Model Use Cases:**
+  - Train **Weather-Driven Lead Time Adjusters** (automated lead time adjustments during severe marine storms along shipping lanes).
 
-**Pakai ini untuk:**  
-- Grafik tren mingguan.
-- Deteksi anomali sederhana.
-- Menambah “market condition score” ke dashboard MVP.
+### 4. **World Bank Logistics Performance Index (LPI)**
+- 🌐 **Link:** [World Bank LPI Portal](https://lpi.worldbank.org/)
+- 📊 **Size / Scope:** National customs efficiency scores, port connectivity ratings, and international logistics reliability indices.
+- 🎯 **Potential Model Use Cases:**
+  - Train **Country-Level Customs Risk Scoring** models (automated country-to-country customs friction scoring).
 
-***
-
-## Kombinasi yang saya sarankan
-
-### Opsi paling realistis: satu dataset saja
-Pakai **Cross-Border Trade & Customs Delay Dataset**.
-
-Alasannya:
-- Langsung punya target regresi (`Customs_Delay_Days`) dan klasifikasi (`Risk_Flag`).
-- Ringan, hanya sekitar 1,88 MB.
-- CC0/Public Domain.
-- Narasinya paling dekat dengan eksportir/importir dan pengiriman lintas negara. [kaggle](https://www.kaggle.com/datasets/ziya07/cross-border-trade-and-customs-delay-dataset)
-
-### Opsi demo lebih kuat: dua sumber data
-- **Model utama:** Cross-Border Trade & Customs Delay Dataset dari Kaggle.  
-- **Dashboard eksternal:** Freight Indicators (Weekly) dari data.gov.
-
-Dengan begitu demo-mu bisa berkata:
-
-> “Untuk shipment laut makanan dari negara A ke negara B, sistem memperkirakan keterlambatan 3 hari dengan risiko tinggi. Selain faktor shipment dan compliance, dashboard juga menunjukkan tekanan freight mingguan sedang meningkat.”
-
-Dataset Kaggle menangani prediksi di level shipment; data.gov memberi kredibilitas indikator publik di level sistem/logistik.
-
-***
-
-## Scope MVP yang tepat
-
-Jangan langsung klaim “memprediksi seluruh supply chain dunia.” Klaim yang lebih kuat dan jujur:
-
-> **AI early-warning tool untuk memprediksi risiko delay customs pada shipment lintas batas, lalu menjelaskan faktor risiko utama secara transparan.**
-
-**Input MVP:**
-- Negara asal dan tujuan  
-- Moda transportasi  
-- Jenis kargo  
-- Carrier  
-- Nilai shipment  
-- Compliance score  
-- Riwayat pelanggaran  
-- Jenis inspeksi  
-
-**Output MVP:**
-- Risiko: low / medium / high  
-- Estimasi hari delay  
-- Tiga faktor pendorong risiko terbesar  
-- Rekomendasi operasional yang bersifat hati-hati, misalnya “periksa kelengkapan dokumen” atau “tambahkan buffer waktu pengiriman”  
-
-Untuk model, gunakan **XGBoost atau scikit-learn Gradient Boosting**, dilatih offline lalu di-deploy hanya untuk inference. Ini ringan dan masuk akal untuk backend FastAPI di Render/Railway.
+### 5. **UNCTAD Maritime Transport & AIS Vessel Traffic Statistics**
+- 🌐 **Link:** [UNCTAD Maritime Statistics Portal](https://unctad.org/topic/transport-and-trade-logistics/maritime-statistics)
+- 📊 **Size / Scope:** Global merchant fleet statistics, port call dwell times, and strategic chokepoint congestion metrics (Suez & Panama Canals).
+- 🎯 **Potential Model Use Cases:**
+  - Train **Vessel ETA & Chokepoint Delay Predictors** for major maritime corridors.
