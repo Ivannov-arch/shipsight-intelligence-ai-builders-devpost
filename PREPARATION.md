@@ -1,5 +1,5 @@
 # PREPARATION.md
->Setup checklist. Complete everything here **before** the clock starts.
+>Setup and configuration checklist.
 
 ---
 
@@ -56,14 +56,14 @@
 |---------|--------|------|-------|
 | **SCMS Delivery History Dataset** | USAID Supply Chain | **✅ Primary — Main Model** | 10k rows, real supply chain data, target delay_days & risk_flag |
 
-### Pre-hackathon Dataset Tasks
+### Dataset Preparation Tasks
 - [x] Download SCMS dataset to `ml/datasets/SCMS_Delivery_History_Dataset.csv`
 - [x] Extracted features: `Country`, `Managed By`, `Fulfill Via`, `Vendor INCO Term`, `Shipment Mode`, `Product Group`, `Sub Classification`, `Vendor`, `Weight`, `Freight Cost`, `Line Item Value`, `Line Item Quantity`, `Pack Price`, `planned_lead_time`, `freight_per_kg`, `value_per_unit`, `sched_month`, `sched_dayofweek`
 - [x] Targets: `delay_days` (Regression) & `risk_flag` (Binary Classification: 0=On Time, 1=Delayed)
 
 ---
 
-## 4. Pre-training Model (Do This Offline Before Hackathon)
+## 4. Model Pre-training & Evaluation
 
 > **Status: Completed! ✅** Models trained, evaluated, and saved to `backend/models/`.
 
@@ -91,7 +91,7 @@
 
 ## 5. Architecture Verification
 
-Confirm the full system flow works end-to-end locally before hackathon:
+Confirm the full system flow works end-to-end locally:
 
 ```
 [Next.js Frontend]
@@ -185,11 +185,11 @@ CREATE TABLE devpost_name_ai_builders.prediction_logs (
 | **Person A — Backend / ML** | FastAPI endpoints, model loading, SHAP, Gemini integration, Supabase |
 | **Person B — Frontend / UX** | Next.js pages, components, CSV upload, dashboard, charts, deploy to Vercel |
 
-> Both should be able to run the full stack locally before hackathon starts.
+> Both should be able to run the full stack locally.
 
 ---
 
-## Pre-Hackathon Checklist Summary
+## Preparation Checklist Summary
 
 - [ ] All accounts created
 - [ ] Both envs set up and working locally
