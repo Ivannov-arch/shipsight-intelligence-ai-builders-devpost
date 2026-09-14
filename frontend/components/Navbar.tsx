@@ -11,7 +11,10 @@ import {
   BarChart3,
   FileSpreadsheet,
   Home,
+  Terminal,
 } from "lucide-react";
+import { useRef } from "react";
+import { useDevMode } from "@/context/DevModeContext";
 
 const NAV_LINKS = [
   { href: "/", label: "Home", icon: Home },
@@ -23,6 +26,39 @@ export default function Navbar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { isDevMode, setIsAuthModalOpen, logout } = useDevMode();
+
+  // Easter egg: 5-click counter
+  const [clickCount, setClickCount] = useState(0);
+  const clickTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handleLogoClick = (e: React.MouseEvent) => {
+    const nextCount = clickCount + 1;
+    setClickCount(nextCount);
+
+    if (clickTimerRef.current) clearTimeout(clickTimerRef.current);
+    clickTimerRef.current = setTimeout(() => {
+      setClickCount(0);
+    }, 2500);
+
+    if (nextCount >= 5) {
+      e.preventDefault();
+      setClickCount(0);
+      setIsAuthModalOpen(true);
+    }
+  };
+
+  // Keyboard shortcut: Ctrl + Shift + D
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key.toLowerCase() === "d") {
+        e.preventDefault();
+        setIsAuthModalOpen(true);
+      }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [setIsAuthModalOpen]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -66,12 +102,15 @@ export default function Navbar() {
         {/* Logo */}
         <Link
           href="/"
+          onClick={handleLogoClick}
           style={{
             display: "flex",
             alignItems: "center",
             gap: "0.6rem",
             textDecoration: "none",
+            cursor: "pointer",
           }}
+          title="SupplyPulse (Click 5 times for Developer Mode)"
         >
           <div
             style={{
@@ -119,7 +158,7 @@ export default function Navbar() {
           style={{
             display: "flex",
             alignItems: "center",
-            gap: "0.25rem",
+            gap: "0.5rem",
           }}
           className="desktop-nav"
         >
@@ -163,6 +202,47 @@ export default function Navbar() {
               </Link>
             );
           })}
+
+          {isDevMode && (
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "0.45rem",
+                background: "linear-gradient(135deg, rgba(30, 27, 75, 0.92), rgba(67, 56, 202, 0.92))",
+                border: "1px solid rgba(129, 140, 248, 0.4)",
+                borderRadius: 20,
+                padding: "0.35rem 0.75rem",
+                color: "#FFFFFF",
+                fontSize: "0.75rem",
+                fontWeight: 600,
+                boxShadow: "0 2px 10px rgba(67, 56, 202, 0.25)",
+                marginLeft: "0.5rem",
+                animation: "fadeIn 0.3s ease",
+              }}
+            >
+              <Terminal size={13} color="#818CF8" />
+              <span>DEV BENCHMARK</span>
+              <button
+                onClick={logout}
+                style={{
+                  background: "rgba(255, 255, 255, 0.2)",
+                  border: "none",
+                  color: "#FFFFFF",
+                  borderRadius: 8,
+                  padding: "1px 6px",
+                  cursor: "pointer",
+                  fontSize: "0.68rem",
+                  fontWeight: 600,
+                  marginLeft: "0.25rem",
+                  transition: "background 0.2s",
+                }}
+                title="Exit Developer Mode"
+              >
+                Exit
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Mobile menu button */}

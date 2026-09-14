@@ -11,7 +11,7 @@ from backend.schemas.request import PredictionRequest, PredictionResponse
 from backend.services.predictor import run_prediction
 from backend.services.gemini_service import generate_action_plan
 
-from backend.routers import predict as predict_router, feedback
+from backend.routers import predict as predict_router, feedback, dev as dev_router
 
 app = FastAPI(
     title="Supply Chain Risk API",
@@ -90,12 +90,25 @@ async def _log_prediction(input_data: PredictionRequest, result: dict):
     return None
 
 
-@app.get("/health")
+@app.get("/", tags=["Health"])
+@app.head("/", tags=["Health"])
+def root():
+    return {
+        "status": "healthy",
+        "service": "SupplyPulse AI API",
+        "version": "1.0.0",
+        "uptime": "active",
+    }
+
+
+@app.get("/health", tags=["Health"])
+@app.head("/health", tags=["Health"])
 def health():
     return {"status": "ok"}
 
 app.include_router(predict_router.router)
 app.include_router(feedback.router)
+app.include_router(dev_router.router, prefix="/api/dev", tags=["Developer"])
 
 
 @app.post("/predict", response_model=PredictionResponse)
