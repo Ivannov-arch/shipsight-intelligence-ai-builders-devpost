@@ -254,28 +254,3 @@ No more blind spots. No more black-box guesses. No more ruined customer trust.
 * **GitHub Repository:** `github.com/Ivannov-arch/supply-chain-devpost`
 
 > *"ShipSight Intelligence: Because knowing a delay is coming is good, but knowing why and how to fix it is everything."*
-
----
-
-# PRESENTER APPENDIX: Live Pitch Script & Judge Q&A Guide
-
-*(Use this script for your 3-minute video recording or live demo presentation)*
-
-### 🎙️ 60-Second Verbal Opening Pitch
-> *"Judges, every year, unexpected supply chain disruptions wipe out over $1.6 trillion from the global economy. Mega-corporations survive because they can pay $100,000 a year for enterprise tracking software. But what about the other 90% of global trade — the small and medium exporters, importers, and regional logistics brokers?*
->
-> *They are left flying completely blind with Excel spreadsheets and gut feelings. That is, until an unexpected 14-day customs delay causes an entire container of medical cargo to spoil, destroying customer trust.*
->
-> *We built **ShipSight Intelligence** to fix this. It’s an accessible, hybrid AI early-warning system. It doesn’t just predict whether a shipment will be delayed with 91.6% accuracy — it uses mathematical Explainable AI to show operators exactly WHY the risk is high, and uses Google Gemini 3.6 Flash to prescribe 3 actionable steps to mitigate it before cargo departs.*
->
-> *With zero enterprise onboarding and drag-and-drop bulk manifest scanning, ShipSight Intelligence transforms logistics uncertainty into predictive advantage."*
-
-### 🛡️ Judge Q&A Defense Cheat Sheet
-
-| Question | Winning Answer Grounded in `initial research.md` |
-| :--- | :--- |
-| **"Why not just ask ChatGPT or Claude to predict delays?"** | LLMs hallucinate numbers and cannot compute multi-variate statistical distributions over tabular logistics data. In ShipSight Intelligence, XGBoost owns all numerical forecasting. Gemini is only used as a domain-tuned reasoning narrator to turn math into action. |
-| **"How is this different from Project44 or FourKites?"** | Enterprise giants are cost-prohibitive ($100k+/yr) and require 6-month ERP integrations. They ignore SMEs. ShipSight Intelligence has zero setup time, accepts standard CSV spreadsheets, and provides 100% explainability rather than a black-box score. |
-| **"How does the system handle cold-start or new routes?"** | We trained on 10,000 real global shipments from USAID SCMS with robust categorical encoders that fall back to generalized cluster attributes (`-1` unknown handling), and we incorporate an active user feedback loop in Supabase to capture actual delivery outcomes for continuous retraining. |
-| **"What is your commercialization roadmap?"** | Freemium tier for micro-exporters (up to 15 shipments/mo), B2B SaaS tiers ($49–$199/mo) for mid-market forwarders using bulk scanning, and API licenses ($500+/mo) for warehouse management systems and freight TMS integration. |
-

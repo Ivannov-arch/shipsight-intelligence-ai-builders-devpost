@@ -113,14 +113,20 @@
 # SLIDE 9: Impact & Value Proposition
 ### Transforming Guesswork into Measurable ROI
 
-| Dimension | Manual Spreadsheets | Enterprise Platforms | **ShipSight Intelligence** |
-| :--- | :--- | :--- | :--- |
-| **Cost** | Hidden ($28k+ failure) | $100,000+/yr | **Freemium / $49-$199/mo** |
-| **Onboarding** | Manual Excel | 3–6 Months ERP setup | **Instant (Zero Integration)** |
-| **Explainability** | Zero | Black-box score | **100% Transparent SHAP** |
-| **Actionability** | Panic firefighting | Raw tracking pings | **Gemini Mitigation Playbook** |
+* 💵 **Affordable & Instant Onboarding**
+  * **$49–$199/mo** (Freemium available) vs $100k+/year enterprise suites.
+  * **Zero integration setup** via CSV drag & drop vs 3–6 months heavy ERP deployment.
 
-> 💰 **Direct ROI:** Eliminating a 4-day port container hold saves up to **$1,600/container** in demurrage fees.
+* 🔍 **100% Transparent & Explainable**
+  * Replaces black-box risk scores with **mathematical TreeSHAP root-cause feature attribution**.
+
+* ⚡ **Prescriptive Action Playbooks**
+  * Shifts from reactive firefighting to **instant Gemini 3.6 Flash mitigation strategies**.
+
+* 🛡️ **Penalty & Demurrage Shield**
+  * Prevents costly SLA breach penalties ($28k+ per incident) and unexpected port hold-ups.
+
+> 💰 **Direct ROI:** Eliminating a single 4-day port container hold saves up to **$1,600/container** in demurrage fees.
 
 ---
 
@@ -135,6 +141,6 @@
 ---
 
 ### **Never Fly Blind into Port Delays Again.**
-* **Demo:** `ShipSight Intelligence-ai.vercel.app`
+* **Demo:** `shipsight-intelligence.vercel.app`
 * **Repo:** `github.com/Ivannov-arch/supply-chain-devpost`
 * **Pitch Line:** *"Predicting a delay is useful. Knowing why and how to fix it is everything."*
