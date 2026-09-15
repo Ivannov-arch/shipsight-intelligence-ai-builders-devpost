@@ -367,9 +367,8 @@ export default function DevDatasetNavigator({
               background: isDelayed
                 ? "rgba(239, 68, 68, 0.12)"
                 : "rgba(34, 197, 94, 0.12)",
-              border: `1px solid ${
-                isDelayed ? "rgba(239, 68, 68, 0.25)" : "rgba(34, 197, 94, 0.25)"
-              }`,
+              border: `1px solid ${isDelayed ? "rgba(239, 68, 68, 0.25)" : "rgba(34, 197, 94, 0.25)"
+                }`,
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",

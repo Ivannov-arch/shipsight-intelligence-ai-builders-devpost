@@ -109,12 +109,14 @@ async function handleResponse<T>(res: Response): Promise<T> {
 
 /** Single shipment prediction — XGBoost + SHAP + Gemini */
 export async function predict(
-  data: PredictionRequest
+  data: PredictionRequest,
+  signal?: AbortSignal
 ): Promise<PredictionResponse> {
   const res = await fetch(`${API_URL}/predict`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
+    signal,
   });
   return handleResponse<PredictionResponse>(res);
 }
@@ -214,8 +216,8 @@ export async function fetchDevRecords(
 }
 
 /** Fetch a single benchmark record by row_id */
-export async function fetchDevRecordById(rowId: number): Promise<DevRecordDetail> {
-  const res = await fetch(`${API_URL}/api/dev/records/${rowId}`);
+export async function fetchDevRecordById(rowId: number, signal?: AbortSignal): Promise<DevRecordDetail> {
+  const res = await fetch(`${API_URL}/api/dev/records/${rowId}`, { signal });
   return handleResponse<DevRecordDetail>(res);
 }
 

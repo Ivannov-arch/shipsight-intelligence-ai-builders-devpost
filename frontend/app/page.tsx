@@ -19,6 +19,7 @@ import {
   ChevronRight,
   Mail,
   MapPin,
+  AlertTriangle,
 } from "lucide-react";
 
 // ── Floating cargo box component ────────────────────────────────
@@ -343,7 +344,7 @@ export default function HomePage() {
               }}
             >
               <Zap size={14} />
-              Trusted by Supply Chain Professionals Worldwide
+              AI-Powered Shipment Delay Predictor
             </span>
           </div>
 
@@ -409,6 +410,168 @@ export default function HomePage() {
                 Upload Bulk Data
               </button>
             </Link>
+          </div>
+        </div>
+      </section>
+
+
+
+      {/* ── Problem Statement Section ─────────────────────────── */}
+      <section
+        style={{
+          padding: "4.5rem 0",
+          background:
+            "linear-gradient(160deg, #F5E6D3 0%, #FEFCF9 45%, #EEF2FF 100%)",
+          borderTop: "1px solid rgba(212,165,116,0.18)",
+          borderBottom: "1px solid rgba(212,165,116,0.12)",
+        }}
+      >
+        <div className="section-container">
+          <div
+            style={{
+              maxWidth: 820,
+              margin: "0 auto",
+              textAlign: "center",
+              marginBottom: "2.5rem",
+            }}
+          >
+            <div
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 6,
+                padding: "0.35rem 1rem",
+                borderRadius: 100,
+                background: "rgba(180,130,60,0.1)",
+                border: "1px solid rgba(196,139,82,0.35)",
+                fontSize: "0.78rem",
+                fontWeight: 700,
+                color: "#8B6914",
+                marginBottom: "1.25rem",
+                textTransform: "uppercase",
+                letterSpacing: "0.05em",
+              }}
+            >
+              <AlertTriangle size={13} />
+              The Real Cost of Supply Chain Blind Spots
+            </div>
+            <h2
+              style={{
+                fontSize: "clamp(1.6rem, 3.5vw, 2.25rem)",
+                fontWeight: 800,
+                color: "#1E1B4B",
+                lineHeight: 1.2,
+                marginBottom: "1.25rem",
+              }}
+            >
+              Every delayed shipment costs you money.
+              <br />
+              <span
+                style={{
+                  background: "linear-gradient(135deg, #C48B52, #4338CA)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }}
+              >
+                Most companies only find out when it&apos;s too late.
+              </span>
+            </h2>
+            <p
+              style={{
+                fontSize: "1rem",
+                color: "#6B7280",
+                lineHeight: 1.7,
+                maxWidth: 640,
+                margin: "0 auto",
+              }}
+            >
+              Cross-border shipments are unpredictable — customs clearance, vendor
+              lead times, freight mode, and destination country all influence whether
+              your goods arrive on time. Without visibility into these risk factors,
+              supply chain teams are left reacting instead of planning.
+            </p>
+          </div>
+
+          {/* Pain Point Cards */}
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+              gap: "1.25rem",
+              maxWidth: 820,
+              margin: "0 auto",
+            }}
+          >
+            {[
+              {
+                emoji: "📦",
+                title: "No early warning",
+                desc: "Delays surface only after goods are stuck at customs — too late to act.",
+              },
+              {
+                emoji: "📊",
+                title: "Data stays siloed",
+                desc: "Shipment history, vendor terms, and freight data live in separate spreadsheets.",
+              },
+              {
+                emoji: "🔁",
+                title: "Reactive planning",
+                desc: "Teams scramble to expedite shipments and absorb extra costs after delays hit.",
+              },
+            ].map((item) => (
+              <div
+                key={item.title}
+                className="glass-card"
+                style={{
+                  padding: "1.5rem",
+                  borderLeft: "3px solid rgba(196,139,82,0.5)",
+                  cursor: "default",
+                }}
+              >
+                <div style={{ fontSize: "1.75rem", marginBottom: "0.6rem" }}>
+                  {item.emoji}
+                </div>
+                <div
+                  style={{
+                    fontSize: "0.92rem",
+                    fontWeight: 700,
+                    color: "#1E1B4B",
+                    marginBottom: "0.4rem",
+                  }}
+                >
+                  {item.title}
+                </div>
+                <p
+                  style={{
+                    fontSize: "0.83rem",
+                    color: "#6B7280",
+                    lineHeight: 1.6,
+                    margin: 0,
+                  }}
+                >
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+
+
+          {/* Bridge to solution */}
+          <div
+            style={{
+              textAlign: "center",
+              marginTop: "2.5rem",
+              fontSize: "1rem",
+              fontWeight: 600,
+              color: "#4338CA",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "0.5rem",
+            }}
+          >
+            <ShieldCheck size={18} />
+            ShipSight Intelligence fixes this — predict before it happens.
           </div>
         </div>
       </section>
@@ -612,8 +775,8 @@ export default function HomePage() {
                 lineHeight: 1.65,
               }}
             >
-              Join thousands of logistics professionals who use ShipSight
-              Intelligence to predict and prevent costly shipment delays.
+              Built for logistics and supply chain teams who want data-driven
+              foresight — not hindsight — on every shipment.
             </p>
             <div
               style={{

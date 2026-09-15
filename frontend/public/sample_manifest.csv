@@ -1,0 +1,11 @@
+country,managed_by,fulfill_via,vendor_inco_term,shipment_mode,product_group,sub_classification,vendor,weight_kg,freight_cost_usd,line_item_value,line_item_quantity,pack_price,planned_lead_time,freight_per_kg,value_per_unit,sched_month,sched_dayofweek
+Nigeria,PMO - US,Direct Drop Shipment,EXW,Air,ARV,Adult,AUROBINDO PHARMA LIMITED,523.4,9500.00,42000.00,1200,35.00,60,18.15,35.00,3,2
+South Africa,PMO - US,From RDC,CIP,Air,HRDT,HIV test - Ancillary,CHEMBIO DIAGNOSTIC SYSTEMS INC,12.8,820.00,5400.00,300,18.00,30,64.06,18.00,6,4
+Uganda,PMO - US,Direct Drop Shipment,EXW,Truck,ANTM,ACTs,GUILIN PHARMACEUTICAL CO LTD,310.0,2100.00,18000.00,5000,3.60,45,6.77,3.60,1,1
+Tanzania,PMO - US,From RDC,DDP,Air,ARV,Adult,MYLAN (FORMERLY KNOWN AS MATRIX LABORATORIES LIMITED),750.2,14200.00,60000.00,2000,30.00,90,18.93,30.00,9,3
+Kenya,PMO - US,Direct Drop Shipment,EXW,Air,MRDT,Malaria,PREMIER MEDICAL CORPORATION LIMITED,45.0,1800.00,9000.00,500,18.00,21,40.00,18.00,11,5
+Ethiopia,PMO - US,From RDC,FCA,Air,ARV,Pediatric,CIPLA LIMITED,280.5,5600.00,32000.00,800,40.00,75,19.96,40.00,4,0
+Ghana,PMO - US,Direct Drop Shipment,EXW,Truck,ANTM,ACTs,STRIDES SHASUN LIMITED,420.0,1500.00,12000.00,3000,4.00,50,3.57,4.00,7,2
+Mozambique,PMO - US,From RDC,CIP,Air,HRDT,HIV test - Ancillary,SKANEM LAGOS LIMITED,8.5,650.00,4200.00,200,21.00,25,76.47,21.00,2,4
+Zambia,PMO - US,Direct Drop Shipment,EXW,Air,ARV,Adult,AUROBINDO PHARMA LIMITED,612.0,11000.00,55000.00,1500,36.67,80,17.97,36.67,8,1
+Rwanda,PMO - US,From RDC,DDP,Air,HRDT,HIV test - Ancillary,CHEMBIO DIAGNOSTIC SYSTEMS INC,22.0,1200.00,7800.00,400,19.50,35,54.55,19.50,5,3
